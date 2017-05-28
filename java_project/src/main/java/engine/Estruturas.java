@@ -184,6 +184,7 @@ public class Estruturas
     
    /**
     * Método que testa se um objeto é igual a uma determinada estrutura
+    *
     * @param o     objeto a ser testado
     * @return      true se o objeto for igual à estrutura, false se o objeto passado não for igual à estrutura
     */
@@ -196,13 +197,22 @@ public class Estruturas
    }
 
    /**
+    * Método que aumenta o nrPages da estrutura a partir de um long passado como parâmetro
+    *
+    * @param n    Número de páginas a somar
+    */
+   public void aumentaPages(long n){
+       this.nrPages = this.nrPages + n;
+   }
+
+   /**
     * Método que adiciona a informação de uma nova revisão ao map das revisões
     *
     * @param idRevisao  Id da revisão
     * @param timestamp  Timestamp da revisão
     */
    public void adicionaRevisao(long idRevisao, String timestamp){
-      this.revisoes.put(idRevisao, timestamp);
+       this.revisoes.put(idRevisao, timestamp);
    }
 
    /**

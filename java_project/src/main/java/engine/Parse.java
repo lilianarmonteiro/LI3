@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Iterator;
@@ -13,7 +14,6 @@ import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-
 /**
  * Classe que retira as informações dos snapshots e as insere nas estruturas criadas.
  */
@@ -136,7 +136,7 @@ public class Parse{
                         	if(pageConteudo){
                            		est.adicionaRevisao(idRevisao, timestamp);
                            		est.renovaArtigo(idArtigo, titulo, nrChars, nrPalavras);
-                           		if(idContribuidor != -1) est.renovaContribuidor(idContribuidor, nome);
+                           		if(idContribuidor != -1) est.renovaContribuidor(idContribuidor, nomeContribuidor);
                            		pageConteudo = false;
                          	}
 
@@ -154,7 +154,7 @@ public class Parse{
             e.printStackTrace();
         }
 
-		est.setNrPages(nrPages);
+		est.aumentaPages(nrPages);
 		return est.clone();
 	}
 

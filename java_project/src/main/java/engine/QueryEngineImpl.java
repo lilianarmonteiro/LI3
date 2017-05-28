@@ -1,14 +1,10 @@
-package engine;
-
-import li3.Interface;
-
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class QueryEngineImpl implements Interface {
+public class QueryEngineImpl {
 
     /**
      *Estruturas utilizadas para inserir a informação dos snapshots
@@ -16,9 +12,8 @@ public class QueryEngineImpl implements Interface {
     private Estruturas estruturas;
     
     //PERGUNTAR AO STOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-    /*public QueryEngineImpl(Estruturas estruturas){
-        this.estruturas = estruturas;
-    }*/
+    public QueryEngineImpl(){
+    }
 
     /**
      *Inicia a estrutura do tipo Estruturas
