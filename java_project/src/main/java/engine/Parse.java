@@ -134,9 +134,9 @@ public class Parse{
                      	EndElement endElement = event.asEndElement();
                      	if(endElement.getName().getLocalPart().equalsIgnoreCase("page")){
                         	if(pageConteudo){
-                           		est.adicionaRevisao(idRevisao, timestamp);
                            		est.renovaArtigo(idArtigo, titulo, nrChars, nrPalavras);
-                           		if(idContribuidor != -1) est.renovaContribuidor(idContribuidor, nomeContribuidor);
+                           		if(idContribuidor != -1) est.renovaContribuidor(idContribuidor, nomeContribuidor, idRevisao);
+                           		est.adicionaRevisao(idRevisao, timestamp);
                            		pageConteudo = false;
                          	}
 

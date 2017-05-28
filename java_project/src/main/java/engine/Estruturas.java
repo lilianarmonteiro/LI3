@@ -212,7 +212,9 @@ public class Estruturas
     * @param timestamp  Timestamp da revisão
     */
    public void adicionaRevisao(long idRevisao, String timestamp){
-       this.revisoes.put(idRevisao, timestamp);
+       if(!(this.revisoes.containsKey(idRevisao))){
+       	   this.revisoes.put(idRevisao, timestamp);
+       }
    }
 
    /**
@@ -245,20 +247,23 @@ public class Estruturas
      * 
      * @param idContribuidor    Id do contribuidor
      * @param nome  	  		Nome do contribuidor
+     * @param idRevisao			Id da revisão feita pelo contribuidor
      */
-   public void renovaContribuidor(long idContribuidor, String nome){
-   	   if(this.contribuidores.containsKey(idContribuidor)){
-   	       Contribuidor contribuidorHash = this.contribuidores.get(idContribuidor);
+   public void renovaContribuidor(long idContribuidor, String nome, long idRevisao){
+   	   if(!(this.revisoes.containsKey(idRevisao))){
+		  if(this.contribuidores.containsKey(idContribuidor)){
+   	      Contribuidor contribuidorHash = this.contribuidores.get(idContribuidor);
 
-   	       	long contribuicoesAtuais = contribuidorHash.getNrContribuicoes() + 1;
+   	      long contribuicoesAtuais = contribuidorHash.getNrContribuicoes() + 1;
    	       
-   	       Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, contribuicoesAtuais);
-   	       this.contribuidores.replace(idContribuidor, novoContribuidor);
-   	   }
+   	      Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, contribuicoesAtuais);
+   	      this.contribuidores.replace(idContribuidor, novoContribuidor);
+   	      }
 
-   	   else{
-   	       Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, 1);
-   	       this.contribuidores.put(idContribuidor, novoContribuidor.clone());
+   	      else{
+   	         Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, 1);
+   	         this.contribuidores.put(idContribuidor, novoContribuidor.clone());
+   	      }
    	   }
    }
 
