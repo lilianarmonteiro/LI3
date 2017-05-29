@@ -227,13 +227,13 @@ public class Estruturas
      */
    public void renovaArtigo(long idArtigo, String titulo, long nrChars, long nrPalavras){
    	   if(this.artigos.containsKey(idArtigo)){
-   	       Artigo artigoHash = this.artigos.get(idArtigo);
+           Artigo artigoHash = this.artigos.get(idArtigo);
 
    	       if(artigoHash.getNrChars() > nrChars) nrChars = artigoHash.getNrChars();
    	       if(artigoHash.getNrPalavras() > nrPalavras) nrPalavras = artigoHash.getNrPalavras();
 
    	       Artigo novoArtigo = new Artigo(idArtigo, titulo, nrChars, nrPalavras);
-   	       this.artigos.replace(idArtigo, novoArtigo);
+   	       this.artigos.replace(idArtigo, novoArtigo.clone());
    	   }
 
    	   else{
@@ -250,26 +250,26 @@ public class Estruturas
      * @param idRevisao			Id da revisão feita pelo contribuidor
      */
    public void renovaContribuidor(long idContribuidor, String nome, long idRevisao){
-   	   if(!(this.revisoes.containsKey(idRevisao))){
-		  if(this.contribuidores.containsKey(idContribuidor)){
-   	      Contribuidor contribuidorHash = this.contribuidores.get(idContribuidor);
+   	  if(!(this.revisoes.containsKey(idRevisao))){
+  		  if(this.contribuidores.containsKey(idContribuidor)){
+     	      Contribuidor contribuidorHash = this.contribuidores.get(idContribuidor);
 
-   	      long contribuicoesAtuais = contribuidorHash.getNrContribuicoes() + 1;
-   	       
-   	      Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, contribuicoesAtuais);
-   	      this.contribuidores.replace(idContribuidor, novoContribuidor);
-   	      }
-
-   	      else{
-   	         Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, 1);
-   	         this.contribuidores.put(idContribuidor, novoContribuidor.clone());
-   	      }
-   	   }
+     	      long contribuicoesAtuais = contribuidorHash.getNrContribuicoes() + 1;
+     	       
+     	      Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, contribuicoesAtuais);
+     	      this.contribuidores.replace(idContribuidor, novoContribuidor.clone());
+     	  }
+     	  else{
+     	      Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, 1);
+     	      this.contribuidores.put(idContribuidor, novoContribuidor.clone());
+     	  }
+   	  }
    }
 
    public void limpaEstruturas(){
       this.nrPages = 0;
       this.artigos.clear();
       this.contribuidores.clear();
+      this.revisoes.clear();
    }
 }

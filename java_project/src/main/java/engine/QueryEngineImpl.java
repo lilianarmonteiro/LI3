@@ -112,6 +112,8 @@ public class QueryEngineImpl {
         ArrayList<Long> artigos = new ArrayList<>();
         int tmp;
         long id = 0, maior = 0;
+
+
         
         for(Map.Entry<Long,Artigo> a: this.estruturas.getArtigos().entrySet()){
             aux.put(a.getKey(), a.getValue().clone());
@@ -141,7 +143,7 @@ public class QueryEngineImpl {
      *@return     O titulo do artigo, ou NULL caso não exita esse artigo
      */
     public String article_title(long article_id) {
-
+   	
         return this.estruturas.getArtigos().get(article_id).getTitulo();
     }
 

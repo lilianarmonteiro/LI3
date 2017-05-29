@@ -57,6 +57,7 @@ public class Parse{
 
       	try {
          	XMLInputFactory factory = XMLInputFactory.newInstance();
+            factory.setProperty("javax.xml.stream.isCoalescing", true);
          	XMLEventReader eventReader = factory.createXMLEventReader(new FileReader(docname));
 
             while(eventReader.hasNext()){
@@ -72,7 +73,7 @@ public class Parse{
                        		title = true;
                        		pageConteudo = true;
                      	}  
-                    	 else if(qName.equalsIgnoreCase("id") && idEncontrados == 0) {
+                    	else if(qName.equalsIgnoreCase("id") && idEncontrados == 0) {
                      		idEncontrados++;
                      		idArt = true;
                     	}
@@ -124,9 +125,9 @@ public class Parse{
                      	}
                      	if(text){
                         	texto = characters.getData();
-                        	nrChars = texto.length();
-                        	nrPalavras = contaPalavras(texto);
-                        	text = false;
+                            nrChars = texto.length();
+                            nrPalavras = contaPalavras(texto);
+                            text = false;
                      	}
                      	break;
       
