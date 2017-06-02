@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 
 import javax.xml.stream.XMLEventReader;
@@ -38,7 +39,7 @@ public class Parse{
 	 * @param texto	  O texto em questão
 	 * @return   O número total de palavras
 	 */
-	public long conta_palavras(String texto){
+	public long contaPalavras(String texto){
         long nrPalavras = 0;
         boolean palavra = false;
         
@@ -78,7 +79,7 @@ public class Parse{
 
       	try {
          	XMLInputFactory factory = XMLInputFactory.newInstance();
-            factory.setProperty("javax.xml.stream.isCoalescing", true);
+            factory.setProperty(XMLInputFactory.IS_COALESCING, true);
          	XMLEventReader eventReader = factory.createXMLEventReader(new FileReader(docname));
 
             while(eventReader.hasNext()){
@@ -146,7 +147,7 @@ public class Parse{
                      	}
                      	if(text){
                         	texto = characters.getData();
-                            nrChars = texto.length();
+                            nrChars = texto.getBytes("UTF-8").length;
                             nrPalavras = contaPalavras(texto);
                             text = false;
                      	}
@@ -174,6 +175,9 @@ public class Parse{
         }
         catch (XMLStreamException e) {
             e.printStackTrace();
+        }
+        catch (UnsupportedEncodingException e){
+        	e.printStackTrace();
         }
 
 		est.aumentaPages(nrPages);
