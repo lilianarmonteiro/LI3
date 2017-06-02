@@ -38,10 +38,31 @@ public class Parse{
 	 * @param texto	  O texto em questão
 	 * @return   O número total de palavras
 	 */
-	public long contaPalavras(String texto){
-        return 0; //FAZEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEER
-	}
-
+	public long conta_palavras(String texto){
+        long nrPalavras = 0;
+        boolean palavra = false;
+        
+        String[] strings = texto.split(" ");
+        
+        char[] aux;
+        
+        for(int i=0; i<strings.length; i++){
+            aux = strings[i].toCharArray();
+            
+            for(int j=0; j<aux.length; j++){
+                if(aux[j] != ' ' && aux[j] != '\n' && aux[j] != '\t' && aux[j] != '\0')
+                    palavra = true;
+            }
+            
+            if(palavra){
+                nrPalavras++;
+                palavra = false;
+            }
+        }
+        
+        return nrPalavras;
+    }
+    
 	/**
 	 * Método auxiliar de "parse" que faz parse de um documento
 	 *
@@ -49,7 +70,7 @@ public class Parse{
 	 * @param est 		Estrutura onde será inserida a informação
 	 * @return			Uma cópia da estrutura com a informação inserida
 	 */
-	public Estruturas parseDoc(String docname, Estruturas est){
+	private Estruturas parseDoc(String docname, Estruturas est){
 		int idEncontrados = 0;
       	boolean pageConteudo = false, title = false, idArt = false, idRev = false, idCont = false, nomeCont = false, timestp = false, text = false;
       	long nrPages = 0, idArtigo = 0, idContribuidor = -1, idRevisao = 0, nrChars = 0, nrPalavras = 0;
