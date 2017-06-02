@@ -233,7 +233,7 @@ public class Estruturas
    	       if(artigoHash.getNrPalavras() > nrPalavras) nrPalavras = artigoHash.getNrPalavras();
 
    	       Artigo novoArtigo = new Artigo(idArtigo, titulo, nrChars, nrPalavras);
-   	       this.artigos.replace(idArtigo, novoArtigo);
+   	       this.artigos.replace(idArtigo, novoArtigo.clone());
    	   }
 
    	   else{
@@ -257,7 +257,7 @@ public class Estruturas
    	      long contribuicoesAtuais = contribuidorHash.getNrContribuicoes() + 1;
    	       
    	      Contribuidor novoContribuidor = new Contribuidor(idContribuidor, nome, contribuicoesAtuais);
-   	      this.contribuidores.replace(idContribuidor, novoContribuidor);
+   	      this.contribuidores.replace(idContribuidor, novoContribuidor.clone());
    	      }
 
    	      else{

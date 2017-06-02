@@ -12,8 +12,8 @@ public class QueryEngineImpl {
     private Estruturas estruturas;
     
     //PERGUNTAR AO STOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR
-    public QueryEngineImpl(){
-    }
+    /*public QueryEngineImpl(){
+    }*/
 
     /**
      *Inicia a estrutura do tipo Estruturas
@@ -209,7 +209,7 @@ public class QueryEngineImpl {
      *@return     O timestamp da revisão, ou NULL caso não exita essa revisão
      */
     public String article_timestamp(long article_id, long revision_id) {
-        return this.estruturas.getRevisoes().get(revision_id);
+        return this.estruturas.getRevisoes().get(revision_id).clone();
     }
     
     /**
